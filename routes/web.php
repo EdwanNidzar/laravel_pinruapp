@@ -39,6 +39,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::resource('peminjamans', \App\Http\Controllers\PeminjamanController::class);
+    Route::patch('peminjamans/{peminjaman}/verify', [\App\Http\Controllers\PeminjamanController::class, 'verify'])->name('peminjamans.verify');
+    Route::patch('peminjamans/{peminjaman}/reject', [\App\Http\Controllers\PeminjamanController::class, 'reject'])->name('peminjamans.reject');
+});
+
+Route::middleware('auth')->group(function () {
     Route::resource('barangrusak', \App\Http\Controllers\BarangRusakController::class);
 });
 
